@@ -1,0 +1,14 @@
+Area: Kitchen
+Date: 2026-03-31
+Description: Counter and sink were clean at move-out; chip near sink appears unchanged from move-in photo.
+
+Room: Living room
+Taken: March 31, 2026
+Notes: Wall scuff behind sofa was already visible in move-in video and no new holes were present.
+
+Location: Bedroom
+Date: 2026-03-31
+Condition: Room was empty, carpet vacuumed, no visible stains.
+
+This block is missing fields and should be rejected.
+

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deposit Defender Desk</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Local-first rental deposit evidence desk</p>
+          <h1>Deposit Defender Desk</h1>
+          <p class="hero-copy">Import move-in/move-out evidence and landlord deductions, then build an evidence gap map, deadline check, and dispute packet outline.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="loadSample">Load sample</button>
+          <button id="runAnalysis" class="primary">Run analysis</button>
+        </div>
+      </section>
+
+      <section class="case-panel panel">
+        <h2>Case setup</h2>
+        <div class="form-grid">
+          <input id="state" placeholder="State, e.g. CA" value="CA" />
+          <input id="moveOutDate" type="date" value="2026-03-31" />
+          <input id="depositAmount" type="number" step="0.01" value="1800" />
+          <input id="noticeDate" type="date" value="2026-04-28" />
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>1. Intake</h2>
+          <div class="tabs">
+            <button class="tab active" data-tab="evidence">Evidence CSV</button>
+            <button class="tab" data-tab="deductions">Deductions CSV</button>
+            <button class="tab" data-tab="notes">Evidence notes</button>
+            <button class="tab" data-tab="rules">Rule JSON</button>
+          </div>
+          <div id="tab-evidence" class="tab-panel active">
+            <textarea id="evidenceCsv" placeholder="evidence_id,date,area,description,stage,file_path"></textarea>
+            <button id="parseEvidence">Parse evidence</button>
+          </div>
+          <div id="tab-deductions" class="tab-panel">
+            <textarea id="deductionCsv" placeholder="deduction_id,area,description,amount,landlord_evidence"></textarea>
+            <button id="parseDeductions">Parse deductions</button>
+          </div>
+          <div id="tab-notes" class="tab-panel">
+            <textarea id="noteText" placeholder="Area: Kitchen&#10;Date: 2026-03-31&#10;Description: Counter was clean and unchanged."></textarea>
+            <button id="parseNotes">Parse notes</button>
+          </div>
+          <div id="tab-rules" class="tab-panel">
+            <textarea id="ruleJson" placeholder='Optional: {"CA":{"deposit_return_days":21,"receipt_threshold":125,"notes":"verify local law"}}'></textarea>
+          </div>
+          <p id="status" class="muted"></p>
+        </article>
+
+        <article class="panel">
+          <h2>2. Review inputs</h2>
+          <div class="split">
+            <div>
+              <h3>Evidence</h3>
+              <div id="evidenceList" class="list"></div>
+            </div>
+            <div>
+              <h3>Deductions</h3>
+              <div id="deductionList" class="list"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="metrics">
+        <article><span>Deductions</span><strong id="mDeductions">0</strong></article>
+        <article><span>Evidence items</span><strong id="mEvidence">0</strong></article>
+        <article><span>Total deductions</span><strong id="mTotal">$0</strong></article>
+        <article><span>Notice late?</span><strong id="mLate">-</strong></article>
+      </section>
+
+      <section class="result-grid">
+        <article class="panel">
+          <h2>Deduction triage</h2>
+          <div id="findings" class="cards"></div>
+        </article>
+        <article class="panel">
+          <h2>Evidence gaps</h2>
+          <div id="gaps" class="cards"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Draft outline</h2>
+        <pre id="outline">Run analysis to generate a local dispute packet outline and Markdown/JSON exports.</pre>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
+

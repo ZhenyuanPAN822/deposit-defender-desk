@@ -1,0 +1,12 @@
+evidence_id,date,area,description,stage,file_path
+E001,2025-04-01,kitchen,"Move-in photo shows existing chip near sink edge",move-in,photos/kitchen_sink_movein.jpg
+E002,2026-03-31,kitchen,"Move-out photo shows sink edge unchanged and clean counter",move-out,photos/kitchen_sink_moveout.jpg
+E003,2025-04-01,living room,"Move-in video shows small wall scuff behind sofa",move-in,photos/living_wall_movein.mp4
+E004,2026-03-31,living room,"Move-out photo shows same wall scuff, no new holes",move-out,photos/living_wall_moveout.jpg
+E005,2026-03-31,bathroom,"Move-out photo shows cleaned vanity and no trash",move-out,photos/bathroom_clean.jpg
+E006,2025-04-01,bathroom,"Move-in checklist notes worn caulk at tub",move-in,docs/movein_checklist.pdf
+E007,2026-03-31,common area,"Move-out hallway photo shows empty hall and no boxes",move-out,photos/hall_clear.jpg
+E008,2026-03-31,bedroom,"Move-out photo shows room empty and swept",move-out,photos/bedroom_empty.jpg
+E009,2026-03-30,kitchen,"Receipt for professional cleaning before move-out",receipt,docs/cleaning_receipt.pdf
+E010,2026-03-31,living room,"Signed move-out walkthrough says no visible damage",move-out,docs/walkthrough_signed.jpg
+

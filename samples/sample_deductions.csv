@@ -1,0 +1,7 @@
+deduction_id,area,description,amount,landlord_evidence
+D001,kitchen,"Countertop chip repair near sink",450,""
+D002,living room,"Wall repaint for scuff behind sofa",300,"photo only"
+D003,bathroom,"Deep cleaning fee",250,""
+D004,common area,"Removal of boxes left in hallway",180,"photo from after move-out"
+D005,bedroom,"Bedroom carpet replacement",700,"invoice"
+
