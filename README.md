@@ -1,78 +1,78 @@
 # Deposit Defender Desk
 
-English | [中文](README.zh-CN.md)
+[English](README.md) | 中文
 
 ## Hero Section
 
-Deposit Defender Desk is a local-first evidence desk for renters preparing a security deposit dispute packet.
+Deposit Defender Desk 是一个本地优先的租房押金争议证据工作台，帮助租客整理 security deposit dispute packet。
 
-- Match landlord deductions against move-in and move-out evidence.
-- Calculate deposit return deadline estimates from editable state rules.
-- Generate evidence gaps, action priorities, and a draft documentation request outline.
+- 把房东扣款项和 move-in / move-out 证据逐项匹配。
+- 根据可编辑的州/地区规则估算押金返还截止日期。
+- 生成证据缺口、行动优先级和文档请求草稿。
 
-Screenshot/GIF to be added before launch.
+上线前补充截图或 GIF。
 
-Quick demo:
+快速体验：
 
 ```bash
 python server.py
 ```
 
-Open `http://127.0.0.1:8790`, click **Load sample**, then **Run analysis**.
+打开 `http://127.0.0.1:8790`，点击 **Load sample**，再点击 **Run analysis**。
 
-## Problem
+## 问题
 
-Security deposit disputes usually come down to documentation. Renters may have photos, videos, cleaning receipts, walkthrough forms, texts, and a landlord deduction list, but the evidence is scattered across camera rolls, email, PDFs, and memory. When the deadline is close, the hard part is matching each deduction to the right proof and seeing which evidence gaps still need work.
+押金争议最后通常拼的是证据。租客可能有照片、视频、清洁收据、walkthrough 表、短信和房东扣款清单，但这些材料分散在相册、邮箱、PDF 和记忆里。截止日期临近时，真正困难的是把每一项扣款对应到正确证据，并看清还缺哪些材料。
 
-## Why Existing Approaches Are Not Enough
+## 为什么现有方式不够
 
-Generic folders store photos but do not connect them to deduction line items. Spreadsheets require the renter to manually calculate deadlines and evidence strength. Legal articles explain the rules, but they do not assemble a local evidence packet. AI chat alone can overclaim or miss the user's actual proof.
+普通文件夹只能存照片，不能把照片和扣款项对应起来。表格需要租客手动算截止日期和证据强度。法律文章能解释规则，但不会帮用户整理本地证据包。单纯问 AI 又容易过度承诺，或者忽略用户实际掌握的证明。
 
-Deposit Defender Desk focuses on the operational layer: organize evidence, map deductions to proof, identify gaps, and create a concise packet outline.
+Deposit Defender Desk 关注中间这层实际工作：组织证据、匹配扣款、发现缺口、生成简洁的文档请求草稿。
 
-## What This Project Does
+## 这个项目做什么
 
-`evidence CSV / evidence notes / deduction CSV -> evidence matching -> deadline and gap analysis -> dispute packet outline -> Markdown/JSON report`
+`证据 CSV / 证据笔记 / 扣款 CSV -> 证据匹配 -> 截止日期和缺口分析 -> 争议材料草稿 -> Markdown/JSON 报告`
 
-## Key Features
+## 核心功能
 
-- Flexible evidence CSV import for dated move-in and move-out photos, videos, walkthrough forms, and receipts.
-- Landlord deduction CSV import with amount, area, description, and provided proof.
-- Pasted evidence note parser for quick manual documentation.
-- Editable state rule JSON for deposit return deadlines and receipt thresholds.
-- Evidence matching by room/area and deduction category.
-- Evidence gap detection for missing move-in proof, move-out proof, landlord receipts, and high-dollar charges.
-- Draft documentation request / dispute outline.
-- Markdown and JSON export.
+- 灵活导入证据 CSV，支持 dated move-in/move-out 照片、视频、walkthrough 表和收据。
+- 导入房东扣款 CSV，包含金额、区域、描述和房东提供的证明。
+- 粘贴证据笔记解析，适合快速补充人工记录。
+- 可编辑州/地区规则 JSON，用于押金返还期限和收据阈值。
+- 按房间/区域和扣款类别匹配证据。
+- 标记缺少 move-in 证据、move-out 证据、房东收据和高金额扣款证明。
+- 生成文档请求 / 争议材料草稿。
+- Markdown 和 JSON 导出。
 
-## Why this is useful
+## 为什么有用
 
-This turns a messy security-deposit folder into a structured dispute packet: which deductions have matching evidence, which ones are missing proof, whether the notice appears late under configured rules, and what documents to gather before responding.
+它把混乱的押金争议材料变成结构化证据包：哪些扣款有对应证据，哪些缺少证明，按照配置规则 notice 是否可能逾期，以及回复前应该补哪些材料。
 
-## Demo / Screenshots
+## 演示
 
-Screenshot/GIF to be added before launch.
+上线前补充截图或 GIF。
 
-The bundled sample includes move-in evidence, move-out evidence, a signed walkthrough, cleaning receipt, disputed countertop/wall/cleaning/common-area charges, missing landlord proof, and a late notice scenario.
+内置样例包含 move-in 证据、move-out 证据、签字 walkthrough、清洁收据、厨房/墙面/清洁/公共区域扣款、房东缺少证明，以及逾期 notice 场景。
 
-## Quick Start
+## 快速开始
 
 ```bash
 cd products/product-022/repo
 python server.py
 ```
 
-Then open:
+然后打开：
 
 ```text
 http://127.0.0.1:8790
 ```
 
-No account, API key, landlord portal, email connection, or internet access is required.
+不需要账号、API key、房东系统、邮箱连接或联网。
 
-## Example Input / Output
+## 输入 / 输出示例
 
-Evidence CSV:
+证据 CSV：
 
 ```csv
 evidence_id,date,area,description,stage,file_path
@@ -80,61 +80,61 @@ E001,2025-04-01,kitchen,"Move-in photo shows existing chip near sink edge",move-
 E002,2026-03-31,kitchen,"Move-out photo shows sink edge unchanged",move-out,photos/kitchen_out.jpg
 ```
 
-Deduction CSV:
+扣款 CSV：
 
 ```csv
 deduction_id,area,description,amount,landlord_evidence
 D001,kitchen,"Countertop chip repair near sink",450,""
 ```
 
-Output files:
+输出文件：
 
 ```text
 outputs/deposit-defender-report.md
 outputs/deposit-defender-report.json
 ```
 
-## Use Cases
+## 使用场景
 
-- Prepare a response to itemized deposit deductions.
-- Check whether each deduction has matching move-in/move-out evidence.
-- Identify missing receipts, photos, or walkthrough forms.
-- Build a concise documentation request before escalating.
-- Keep a local record without uploading rental evidence to a cloud service.
+- 回复房东的 itemized deduction 清单。
+- 检查每项扣款是否有 move-in/move-out 证据支持。
+- 找出缺少的收据、照片或 walkthrough 表。
+- 在升级争议前生成简洁的文档请求。
+- 不把租房证据上传到云服务，也能保留本地记录。
 
-## How It Works
+## 工作原理
 
-The analyzer normalizes evidence and deductions by room/area, categorizes deduction text, compares each deduction with matching move-in and move-out evidence, flags missing evidence, applies a configurable state deadline rule, and creates a triage score. The score is a workflow priority, not a legal prediction.
+分析器会按房间/区域标准化证据和扣款，分类扣款文本，把每一项扣款与同区域 move-in/move-out 证据匹配，标记证据缺口，应用可配置的州/地区截止日期规则，并生成 triage score。这个分数只是工作流优先级，不是法律结果预测。
 
-## Project Structure
+## 项目结构
 
 ```text
-deposit_defender_desk/analyzer.py  Evidence parser, deduction matcher, deadline analysis, exports
-server.py                          Local HTTP server
-web/                               Browser UI
-samples/                           Evidence and deduction fixtures
-examples/                          Pasted evidence notes
-tests/                             Unit tests
-scripts/smoke_test.py              User-perspective smoke test
+deposit_defender_desk/analyzer.py  证据解析、扣款匹配、截止日期分析和导出
+server.py                          本地 HTTP 服务
+web/                               浏览器界面
+samples/                           证据和扣款样例
+examples/                          粘贴证据笔记
+tests/                             单元测试
+scripts/smoke_test.py              用户视角 smoke test
 ```
 
-## Roadmap
+## 路线图
 
-- Photo metadata import helper.
-- PDF itemized deduction parser.
-- State rule packs maintained as separate editable JSON files.
-- Exhibit numbering and printable packet export.
-- Calendar reminder export for deposit deadlines.
+- 照片 metadata 导入辅助功能。
+- PDF 扣款清单解析。
+- 独立可编辑的州/地区规则包。
+- Exhibit 编号和可打印证据包导出。
+- 押金截止日期日历提醒导出。
 
-## Limitations
+## 限制
 
-Deposit Defender Desk is not legal advice and does not predict court outcomes. State and local rules change and must be verified. The app does not upload photos, read image contents, contact landlords, file claims, or connect to email/cloud storage. Evidence matching is based on text, areas, dates, and local rule configuration.
+Deposit Defender Desk 不是法律建议，也不预测法院结果。州和地方规则会变化，用户需要自行核验。应用不会上传照片、读取图片内容、联系房东、提交索赔，或连接邮箱/云盘。证据匹配基于文本、区域、日期和本地规则配置。
 
-## License
+## 许可证
 
 MIT
 
 ## Language
 
-中文版本: [README.zh-CN.md](README.zh-CN.md)
+English version: [README.md](README.md)
 
